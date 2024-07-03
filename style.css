@@ -1,0 +1,28 @@
+#page1 {
+    background: lightblue;
+}
+
+#page1 input[type="text"]{
+    position: relative;
+    margin-left: 30px;
+    width: 200px;
+}
+
+#page1 input[type="button"]{
+    position: relative;
+    left: 5px;
+}
+
+#page1 select{
+    position: relative;
+    left: 1px;
+}
+
+#page2 input[type="button"]{
+    position: relative;
+    top: 10px;
+}
+
+#visitkort {
+    padding: 5px;
+}

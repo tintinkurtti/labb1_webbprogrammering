@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Labb 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--Div for page 1 containing the input fields-->
+<div id="page1">
+    <h2>Beställ ditt visitkort här:</h2>
+    <p>
+        Företag.......<input  type="text" id="företag">
+    </p>
+    <p>
+        Efternamn..<input type="text" id="efternamn">
+    </p>
+    <p>
+        Förnamn....<input type="text" id="förnamn">
+    </p>
+    <p>
+        Titel...........<input type="text" id="titel">
+    </p>
+    <p>
+        Telefon......<input type="text" id="telefon">
+    </p>
+    <p>
+        E-post........<input type="text" id="epost">
+    </p>
+    <!--Selection of background color-->
+    <p>
+        Bakgrundsfärg. <select id="bfärg">
+            <option value="lightblue">Ljusblå</option>
+            <option value="lightyellow">Ljusgul</option>
+            <option value="white">Vit</option>
+            <option value="turquoise">Turkos</option>
+        </select>
+    </p>
+    <!--Selection of text color-->
+    <p>
+        Textfärg........... <select id="tfärg">
+            <option value="black">Svart</option>
+            <option value="blue">Blå</option>
+            <option value="red">Röd</option>
+            <option value="darkgreen">Mörkgrön</option>
+        </select>
+    </p>
+    <!--Selection och font-->
+    <p>
+        Typsnitt............<select id="typsnitt">
+            <option value="Verdana">Verdana</option>
+            <option value="Arial">Arial</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Impact">Impact</option>
+        </select>
+    </p>
+    <!--Buttons for resetting and printing-->
+    <p>
+        <input type="button" id="noll" value="Nollställ">
+        <input type="button" id="skriv" value="Skriv ut">
+    </p>
+</div>
+
+<!--Div for page 2 containing div for visitkort-->
+<div id="page2">
+    <div id="visitkort">
+        <h1 id="Företag_"> </h1>
+        <p id="Namn_"></p>
+        <p id="Titel_"></p>
+        <p id="Telefon_"></p>
+        <p id="Epost_"></p>
+    </div>
+    <!--Button to go to page 1-->
+    <input type="button" id="tillbaka" value="Tillbaka">
+</div>
+
+<script>
+    "use strict";
+
+    // Wait for DOM to load
+    document.addEventListener("DOMContentLoaded", function(){
+
+        //Hide the page2 div
+        document.getElementById("page2").style.display = "none";
+
+        //Handles the click event on the skriv button
+        document.getElementById('skriv').addEventListener("click", function(){
+            document.getElementById("page1").style.display = "none";
+            document.getElementById("page2").style.display = "block";
+
+            //Change the style of the visitkort div
+            document.getElementById("visitkort").style.fontFamily = document.getElementById("typsnitt").value;
+            document.getElementById("visitkort").style.color = document.getElementById("tfärg").value;
+            document.getElementById("visitkort").style.backgroundColor = document.getElementById("bfärg").value;
+
+            //Set the innerHTML of the elements in the page2 to the values of the input fields in page1
+            document.getElementById("Företag_").innerHTML = document.getElementById("företag").value;
+            document.getElementById("Namn_").innerHTML = document.getElementById("förnamn").value + " " + document.getElementById("efternamn").value;
+            document.getElementById("Titel_").innerHTML = document.getElementById("titel").value;
+            document.getElementById("Telefon_").innerHTML = "Tfn " + document.getElementById("telefon").value;
+            document.getElementById("Epost_").innerHTML = "E-post: " + document.getElementById("epost").value;
+        });
+
+        //Changes the values of the input fields in page1 to empty strings
+        document.getElementById("noll").addEventListener("click", function(){
+            document.getElementById("företag").value = "";
+            document.getElementById("efternamn").value = "";
+            document.getElementById("förnamn").value = "";
+            document.getElementById("titel").value = "";
+            document.getElementById("telefon").value = "";
+            document.getElementById("epost").value = "";
+        });
+
+        //Handles the click event on the tillbaka button
+        document.getElementById("tillbaka").addEventListener("click", function(){
+            document.getElementById("page1").style.display = "block";
+            document.getElementById("page2").style.display = "none";
+        });
+    })
+</script>
+</body>
+</html>
